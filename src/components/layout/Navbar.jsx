@@ -9,9 +9,9 @@ function Navbar() {
 
   const links = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Projects", href: "/projects" },
-    { name: "Contact", href: "/contact" },
+    { name: "About", href: "/About" },
+    { name: "Project", href: "/Project" },
+    { name: "Contact", href: "/Contact" },
   ];
 
   return (
