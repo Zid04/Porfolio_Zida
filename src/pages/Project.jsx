@@ -62,7 +62,7 @@ function Projects() {
             </div>
 
             <Button
-              variant="default"
+              variant="primary"
               size="sm"
               onClick={() => window.open(project.link, "_blank")}
             >
