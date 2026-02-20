@@ -4,7 +4,7 @@ import  {Separator} from "../ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../../assets/logoZid.png"; 
 
-function Navbar() {
+function NavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
@@ -93,4 +93,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavBar;
