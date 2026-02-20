@@ -1,0 +1,16 @@
+body {
+  background: black;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(88, 28, 135, 0.4),
+    black,
+    rgba(219, 39, 119, 0.3)
+  );
+  z-index: -1;
+}
