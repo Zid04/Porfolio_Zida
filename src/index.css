@@ -15,6 +15,10 @@ body::before {
     rgba(98, 19, 100, 0.899)
   );
   z-index: -1;
+
+}
+html {
+  scroll-behavior: smooth;
 }
 
 
