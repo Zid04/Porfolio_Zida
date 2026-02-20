@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Button}  from "../ui/button";
-import  {Separator} from "../ui/separator";
+import { Button } from "../ui/button";
+import { Separator } from "../ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../../assets/logoZid.png"; 
+import { Link } from "react-router-dom";
+import logo from "../../assets/logoZid.png";
 
-function NavBar() {
+function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
@@ -17,32 +18,33 @@ function NavBar() {
   return (
     <nav className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md z-50">
       <div className="max-w-6xl mx-auto flex justify-between items-center py-1 px-2">
-        
-        {/* Logo seul */}
+
+        {/* Logo */}
         <div className="cursor-pointer">
-          <img src={logo} alt="Logo" className="w-20 h-20" />
+          <Link to="/">
+            <img src={logo} alt="Logo" className="w-20 h-20" />
+          </Link>
         </div>
 
         {/* Desktop Links */}
         <ul className="hidden md:flex space-x-6 items-center">
           {links.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
+              <Link
+                to={link.href}
                 className="text-white hover:text-purple-400 transition"
               >
                 {link.name}
-              </a>
+              </Link>
             </li>
           ))}
           <Separator orientation="vertical" className="bg-white/30 h-6 mx-2" />
-          <Button
-            variant="default"
-            size="sm"
-            onClick={() => (window.location.href = "/contact")}
-          >
-            Contact Me
-          </Button>
+
+          <Link to="/Contact">
+            <Button variant="default" size="sm">
+              Contact Me
+            </Button>
+          </Link>
         </ul>
 
         {/* Mobile Hamburger */}
@@ -67,25 +69,21 @@ function NavBar() {
           >
             {links.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="text-white hover:text-purple-400 transition"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               </li>
             ))}
-            <Button
-              variant="default"
-              size="sm"
-              onClick={() => {
-                window.location.href = "/contact";
-                setMobileOpen(false);
-              }}
-            >
-              Contact Me
-            </Button>
+
+            <Link to="/Contact" onClick={() => setMobileOpen(false)}>
+              <Button variant="default" size="sm">
+                Contact Me
+              </Button>
+            </Link>
           </motion.ul>
         )}
       </AnimatePresence>
@@ -93,4 +91,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default Navbar;
