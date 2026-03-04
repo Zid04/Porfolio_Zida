@@ -4,16 +4,24 @@ import { Separator } from "../ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logoZid.png";
+import useMobile from "../../hooks/useMobile";
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const isMobile = useMobile(1024);
 
   const links = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/About" },
-    { name: "Project", href: "/Project" },
-    { name: "Contact", href: "/Contact" },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
   ];
+
+  const handleMobileScroll = (href) => {
+    setMobileOpen(false);
+    const section = document.querySelector(href);
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md z-50">
@@ -21,9 +29,15 @@ function Navbar() {
 
         {/* Logo */}
         <div className="cursor-pointer">
-          <Link to="/">
-            <img src={logo} alt="Logo" className="w-20 h-20" />
-          </Link>
+          {isMobile ? (
+            <button onClick={() => handleMobileScroll("#home")}>
+              <img src={logo} alt="Logo" className="w-20 h-20" />
+            </button>
+          ) : (
+            <Link to="/">
+              <img src={logo} alt="Logo" className="w-20 h-20" />
+            </Link>
+          )}
         </div>
 
         {/* Desktop Links */}
@@ -31,17 +45,18 @@ function Navbar() {
           {links.map((link) => (
             <li key={link.href}>
               <Link
-                to={link.href}
+                to={link.href.replace("#", "/")}
                 className="text-white hover:text-purple-400 transition"
               >
                 {link.name}
               </Link>
             </li>
           ))}
+
           <Separator orientation="vertical" className="bg-white/30 h-6 mx-2" />
 
-          <Link to="/Contact">
-            <Button variant="default" size="sm">
+          <Link to="/contact">
+            <Button variant="secondary" size="sm" className="text-black">
               Contact Me
             </Button>
           </Link>
@@ -69,21 +84,20 @@ function Navbar() {
           >
             {links.map((link) => (
               <li key={link.href}>
-                <Link
-                  to={link.href}
+                <button
+                  onClick={() => handleMobileScroll(link.href)}
                   className="text-white hover:text-purple-400 transition"
-                  onClick={() => setMobileOpen(false)}
                 >
                   {link.name}
-                </Link>
+                </button>
               </li>
             ))}
 
-            <Link to="/Contact" onClick={() => setMobileOpen(false)}>
-              <Button variant="default" size="sm">
+            <button onClick={() => handleMobileScroll("#contact")}>
+              <Button variant="secondary" size="sm" className="text-black">
                 Contact Me
               </Button>
-            </Link>
+            </button>
           </motion.ul>
         )}
       </AnimatePresence>

@@ -1,17 +1,15 @@
-import Home from "./Home";
-import About from "./About";
-import Project from "./Project";
-import Contact from "./Contact";
+import HomeSection from "../sections/HomeSection";
+import AboutSection from "../sections/AboutSection";
+import ProjectsSection from "../sections/ProjectsSection";
+import ContactSection from "../sections/ContactSection";
 
-function MobileScroll() {
+export default function MobileScroll() {
   return (
     <>
-      <Home />
-      <About />
-      <Project />
-      <Contact />
+      <HomeSection />
+      <AboutSection />
+      <ProjectsSection />
+      <ContactSection />
     </>
   );
 }
-
-export default MobileScroll;

@@ -7,41 +7,48 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
 
-      
       <div className="relative z-10 max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
 
+        {/* Texte */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="text-white space-y-6"
         >
-          <h2 className="text-2xl md:text-2xl font-bold">
-            Veronique Zida Fanta Owona 
+          <h2 className="text-3xl font-bold">
+            Veronique Zida Fanta Owona
           </h2>
 
-          <h1 className="text-6xl md:text-4xl text-purple-400 font-bold">
-            Fullstack React Developer.
+          <h1 className="text-5xl md:text-6xl text-purple-400 font-bold leading-tight">
+            Fullstack React Developer
           </h1>
 
+          <p className="text-purple-300 font-medium">
+            Currently looking for a web development internship (React / Node / PHP).
+          </p>
+
           <p className="text-gray-400 max-w-lg">
-           Specialized in modern web development, I build applications using React, Node.js, and PHP 
-           that are performant, secure, and scalable, while placing a strong emphasis on user experience and code quality.
-</p>
+            I build modern, scalable and user‑focused applications using React, Node.js and PHP. 
+            My work emphasizes performance, clean architecture and high‑quality user experience.
+          </p>
+
           <div className="flex gap-4 pt-4"> 
             <Link to="/projects">
-            <Button variant="primary" asChild>
-             View my projects
-            </Button>
+              <Button variant="primary">
+                View my projects
+              </Button>
             </Link>
-<Link to="/contact" >
-            <Button variant="outline">
-               contact me
-            </Button>
+
+            <Link to="/contact">
+              <Button variant="outline">
+                Contact me
+              </Button>
             </Link>
           </div>
         </motion.div>
 
+        {/* Image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
