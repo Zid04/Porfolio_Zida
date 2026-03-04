@@ -4,7 +4,7 @@ import { Separator } from "../ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logoZid.png";
-import useMobile from "../../hooks/useMobile";
+import useMobile from "../../hooks/UseMobile";
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
