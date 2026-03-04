@@ -1,7 +1,7 @@
-import HomeSection from "../sections/HomeSection";
-import AboutSection from "../sections/AboutSection";
-import ProjectsSection from "../sections/ProjectsSection";
-import ContactSection from "../sections/ContactSection";
+import HomeSection from "../Sections/HomeSection";
+import AboutSection from "../Sections/AboutSection";
+import ProjectsSection from "../Sections/ProjectsSection";
+import ContactSection from "../Sections/ContactSection";
 
 export default function MobileScroll() {
   return (
