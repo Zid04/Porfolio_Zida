@@ -25,12 +25,12 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-purple-300 font-medium">
-            Currently looking for a web development internship (React / Node / PHP).
+            Currently seeking a web development internship, with the possibility of taking on freelance projects alongside it.
           </p>
 
           <p className="text-gray-400 max-w-lg">
-            I build modern, scalable and user‑focused applications using React, Node.js and PHP. 
-            My work emphasizes performance, clean architecture and high‑quality user experience.
+          Specialized in modern web development, I build applications using React, Node.js, and PHP 
+           that are performant, secure, and scalable, while placing a strong emphasis on user experience and code quality. 
           </p>
 
           <div className="flex gap-4 pt-4"> 
