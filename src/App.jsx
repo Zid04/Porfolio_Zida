@@ -9,7 +9,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/not_found";
 
 import MobileScroll from "./pages/MobileScroll";
-import useMobile from "./hooks/useMobile";
+import useMobile from "./hooks/UseMobile";
 
 function App() {
   const isMobile = useMobile(1024);
