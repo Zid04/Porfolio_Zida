@@ -14,7 +14,6 @@ function Navbar() {
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
   ];
 
   const handleMobileScroll = (href) => {
@@ -45,7 +44,7 @@ function Navbar() {
           {links.map((link) => (
             <li key={link.href}>
               <Link
-                to={link.href.replace("#", "/")}
+                to={link.href === "#home" ? "/" : link.href.replace("#", "/")}
                 className="text-white hover:text-purple-400 transition"
               >
                 {link.name}
