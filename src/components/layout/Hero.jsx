@@ -55,7 +55,6 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="relative flex justify-center"
         >
-          {/* L’élément qui bloquait tous les clics → corrigé */}
           <div className="absolute w-72 h-72 bg-purple-600/30 blur-3xl rounded-full pointer-events-none" />
 
           <img

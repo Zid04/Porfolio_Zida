@@ -36,7 +36,6 @@ function About() {
   return (
     <section id="about" className="relative py-20 px-6 text-white overflow-hidden">
 
-      {/* Titre principal */}
       <div className="text-center mb-16">
         <h1 className="text-5xl font-bold text-purple-300">About Me</h1>
         <p className="text-gray-400 mt-3 max-w-2xl mx-auto">
@@ -44,20 +43,17 @@ function About() {
         </p>
       </div>
 
-      {/* Présentation */}
       <div className="flex flex-col md:flex-row items-stretch gap-12 max-w-6xl mx-auto mb-24">
         
-        {/* Texte */}
         <div className="w-full md:w-1/2 flex flex-col justify-center gap-6">
           <h2 className="text-3xl font-bold text-purple-200">Who am I?</h2>
 
           <p className="text-white/80 leading-relaxed">
             I am a fullstack developer specialized in building modern, scalable and high‑performance web applications.
-            With a dual expertise in design and development, I focus on creating digital products that are both functional and visually appealing.
           </p>
 
           <p className="text-white/80 leading-relaxed">
-            My journey has allowed me to work on diverse projects, from requirement analysis to deployment, including UI/UX prototyping and component‑based architecture.
+            My journey has allowed me to work on diverse projects, from requirement analysis to deployment.
           </p>
 
           <Button
@@ -69,7 +65,6 @@ function About() {
           </Button>
         </div>
 
-        {/* Illustration */}
         <div className="w-full md:w-1/2 flex items-center justify-center">
           <img
             src={Illustration}
@@ -79,7 +74,6 @@ function About() {
         </div>
       </div>
 
-      {/* Skills */}
       <div className="max-w-6xl mx-auto mb-24">
         <h2 className="text-4xl font-bold text-center mb-8 text-purple-300">My Skills</h2>
 
@@ -88,10 +82,8 @@ function About() {
         </div>
       </div>
 
-      {/* Formations & Expériences */}
       <div className="grid md:grid-cols-2 gap-10 w-full max-w-6xl mx-auto">
 
-        {/* Formations */}
         <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10">
           <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2 text-purple-300">
             <FaGraduationCap /> Formations
@@ -107,7 +99,6 @@ function About() {
           </ul>
         </div>
 
-        {/* Expériences */}
         <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10">
           <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2 text-pink-300">
             <FaBriefcase /> Expériences

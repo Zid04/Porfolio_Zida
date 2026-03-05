@@ -34,15 +34,9 @@ function Navbar() {
 
         {/* Logo */}
         <div className="cursor-pointer">
-          {isMobile ? (
-            <button onClick={() => handleSmartNav("#home", "/")}>
-              <img src={logo} alt="Logo" className="w-20 h-20" />
-            </button>
-          ) : (
-            <Link to="/">
-              <img src={logo} alt="Logo" className="w-20 h-20" />
-            </Link>
-          )}
+          <button onClick={() => handleSmartNav("#home", "/")}>
+            <img src={logo} alt="Logo" className="w-20 h-20" />
+          </button>
         </div>
 
         {/* Desktop Links */}

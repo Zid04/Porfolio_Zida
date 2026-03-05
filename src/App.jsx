@@ -16,23 +16,27 @@ function App() {
 
   return (
     <Router>
-      <NavBar />
-
       {isMobile ? (
-        <MobileScroll />
+        <>
+          <NavBar />
+          <MobileScroll />
+          <Footer />
+        </>
       ) : (
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Project />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
+        <>
+          <NavBar />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Project />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </>
       )}
-
-      <Footer />
     </Router>
   );
 }
