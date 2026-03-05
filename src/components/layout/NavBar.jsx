@@ -73,33 +73,34 @@ function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.ul
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="flex flex-col md:hidden bg-black/90 backdrop-blur-md text-center space-y-4 py-4 px-6"
+  <AnimatePresence>
+  {mobileOpen && (
+    <motion.ul
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      className="flex flex-col md:hidden bg-black/90 backdrop-blur-md text-center space-y-4 py-4 px-6 relative z-[9999]"
+    >
+      {links.map((link) => (
+        <li key={link.href}>
+          <button
+            onClick={() => handleMobileScroll(link.href)}
+            className="text-white hover:text-purple-400 transition"
           >
-            {links.map((link) => (
-              <li key={link.href}>
-                <button
-                  onClick={() => handleMobileScroll(link.href)}
-                  className="text-white hover:text-purple-400 transition"
-                >
-                  {link.name}
-                </button>
-              </li>
-            ))}
+            {link.name}
+          </button>
+        </li>
+      ))}
 
-            <button onClick={() => handleMobileScroll("#contact")}>
-              <Button variant="secondary" size="sm" className="text-black">
-                Contact Me
-              </Button>
-            </button>
-          </motion.ul>
-        )}
-      </AnimatePresence>
+      <button onClick={() => handleMobileScroll("#contact")}>
+        <Button variant="secondary" size="sm" className="text-black">
+          Contact Me
+        </Button>
+      </button>
+    </motion.ul>
+  )}
+</AnimatePresence>
+
     </nav>
   );
 }
