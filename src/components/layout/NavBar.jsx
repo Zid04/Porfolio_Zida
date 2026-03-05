@@ -2,24 +2,30 @@ import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logoZid.png";
 import useMobile from "../../hooks/UseMobile";
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const isMobile = useMobile(1024);
+  const navigate = useNavigate();
 
   const links = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
+    { name: "Home", href: "#home", route: "/" },
+    { name: "About", href: "#about", route: "/about" },
+    { name: "Projects", href: "#projects", route: "/projects" },
   ];
 
-  const handleMobileScroll = (href) => {
+  const handleSmartNav = (href, route) => {
     setMobileOpen(false);
-    const section = document.querySelector(href);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
+
+    if (isMobile) {
+      const section = document.querySelector(href);
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate(route);
+    }
   };
 
   return (
@@ -29,7 +35,7 @@ function Navbar() {
         {/* Logo */}
         <div className="cursor-pointer">
           {isMobile ? (
-            <button onClick={() => handleMobileScroll("#home")}>
+            <button onClick={() => handleSmartNav("#home", "/")}>
               <img src={logo} alt="Logo" className="w-20 h-20" />
             </button>
           ) : (
@@ -44,7 +50,7 @@ function Navbar() {
           {links.map((link) => (
             <li key={link.href}>
               <Link
-                to={link.href === "#home" ? "/" : link.href.replace("#", "/")}
+                to={link.route}
                 className="text-white hover:text-purple-400 transition"
               >
                 {link.name}
@@ -73,34 +79,33 @@ function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-  <AnimatePresence>
-  {mobileOpen && (
-    <motion.ul
-      initial={{ height: 0, opacity: 0 }}
-      animate={{ height: "auto", opacity: 1 }}
-      exit={{ height: 0, opacity: 0 }}
-      className="flex flex-col md:hidden bg-black/90 backdrop-blur-md text-center space-y-4 py-4 px-6 relative z-[9999]"
-    >
-      {links.map((link) => (
-        <li key={link.href}>
-          <button
-            onClick={() => handleMobileScroll(link.href)}
-            className="text-white hover:text-purple-400 transition"
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.ul
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="flex flex-col md:hidden bg-black/90 backdrop-blur-md text-center space-y-4 py-4 px-6 relative z-[9999]"
           >
-            {link.name}
-          </button>
-        </li>
-      ))}
+            {links.map((link) => (
+              <li key={link.href}>
+                <button
+                  onClick={() => handleSmartNav(link.href, link.route)}
+                  className="text-white hover:text-purple-400 transition"
+                >
+                  {link.name}
+                </button>
+              </li>
+            ))}
 
-      <button onClick={() => handleMobileScroll("#contact")}>
-        <Button variant="secondary" size="sm" className="text-black">
-          Contact Me
-        </Button>
-      </button>
-    </motion.ul>
-  )}
-</AnimatePresence>
-
+            <button onClick={() => handleSmartNav("#contact", "/contact")}>
+              <Button variant="secondary" size="sm" className="text-black">
+                Contact Me
+              </Button>
+            </button>
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

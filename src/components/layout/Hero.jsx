@@ -29,8 +29,8 @@ export default function HeroSection() {
           </p>
 
           <p className="text-gray-400 max-w-lg">
-          Specialized in modern web development, I build applications using React, Node.js, and PHP 
-           that are performant, secure, and scalable, while placing a strong emphasis on user experience and code quality. 
+            Specialized in modern web development, I build applications using React, Node.js, and PHP 
+            that are performant, secure, and scalable, while placing a strong emphasis on user experience and code quality.
           </p>
 
           <div className="flex gap-4 pt-4"> 
@@ -55,7 +55,8 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="relative flex justify-center"
         >
-          <div className="absolute w-72 h-72 bg-purple-600/30 blur-3xl rounded-full" />
+          {/* L’élément qui bloquait tous les clics → corrigé */}
+          <div className="absolute w-72 h-72 bg-purple-600/30 blur-3xl rounded-full pointer-events-none" />
 
           <img
             src={Profil}

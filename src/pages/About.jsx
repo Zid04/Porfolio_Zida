@@ -3,6 +3,8 @@ import Skills from "../components/layout/Skills";
 import { Button } from "../components/ui/button";
 import Illustration from "../assets/illustration.jpg";
 import { FaGraduationCap, FaBriefcase } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import useMobile from "../hooks/UseMobile";
 
 const formations = [
   { year: "2025-2026", title: "Bachelor 3 de Développement Web", school: "My Digital School" },
@@ -19,6 +21,18 @@ const experiences = [
 ];
 
 function About() {
+  const navigate = useNavigate();
+  const isMobile = useMobile(1024);
+
+  const goToProjects = () => {
+    if (isMobile) {
+      const section = document.querySelector("#projects");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/projects");
+    }
+  };
+
   return (
     <section id="about" className="relative py-20 px-6 text-white overflow-hidden">
 
@@ -49,7 +63,7 @@ function About() {
           <Button
             size="sm"
             className="mt-2 w-fit rounded-full px-6 py-2 bg-pink-500 hover:bg-pink-600 transition"
-            onClick={() => window.location.href = "/projects"}
+            onClick={goToProjects}
           >
             See my work
           </Button>
