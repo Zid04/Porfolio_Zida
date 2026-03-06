@@ -80,7 +80,7 @@ export default function Contact() {
       {/* Disponibilité */}
       <div className="flex items-center gap-2 mb-10">
         <span className="w-3 h-3 bg-green-600 rounded-full animate-pulse"></span>
-        <span>Available for freelance projects, internships, and full‑time roles.</span>
+        <h3 className="text-xl md:text-2xl font-semibold text-pink-400 mb-4 text-center">Available for freelance projects, internships, and full‑time roles.</h3>
       </div>
 
       {/* Formulaire */}

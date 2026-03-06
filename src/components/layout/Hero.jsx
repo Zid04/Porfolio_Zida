@@ -47,9 +47,13 @@ export default function HeroSection() {
             React, Node.js, and PHP that are performant, secure, and scalable,
             while placing a strong emphasis on user experience and code quality.
           </p>
+           <h3 className="text-xl md:text-2xl font-semibold text-pink-400 mb-4">
+  Available for internship, freelance projects,or part-time opportunities while continuing my studies.
+</h3>
 
           {/* Boutons */}
           <div className="flex gap-4 pt-4">
+           
             <Button
               variant="primary"
               onClick={() => goToSection("projects", "/projects")}
