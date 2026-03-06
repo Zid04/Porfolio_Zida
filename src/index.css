@@ -14,11 +14,15 @@ body::before {
     black,
     rgba(98, 19, 100, 0.899)
   );
-  z-index: -1;
+ z-index: -9999;
+pointer-events: none;
+
 
 }
 html {
   scroll-behavior: smooth;
 }
-
+section {
+  scroll-margin-top: 100px; 
+}
 

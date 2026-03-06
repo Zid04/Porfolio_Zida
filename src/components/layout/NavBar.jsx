@@ -1,64 +1,53 @@
 import React, { useState } from "react";
 import { Button } from "../ui/button";
-import { Separator } from "../ui/separator";
-import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logoZid.png";
 import useMobile from "../../hooks/UseMobile";
 
-function Navbar() {
+export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const isMobile = useMobile(1024);
   const navigate = useNavigate();
 
   const links = [
-    { name: "Home", href: "#home", route: "/" },
-    { name: "About", href: "#about", route: "/about" },
-    { name: "Projects", href: "#projects", route: "/projects" },
+    { name: "Home", id: "home", route: "/" },
+    { name: "About", id: "about", route: "/about" },
+    { name: "Projects", id: "projects", route: "/projects" }
   ];
 
-  const handleSmartNav = (href, route) => {
+  // Scroll ou navigation
+  const handleClick = (id, route) => {
     setMobileOpen(false);
-
     if (isMobile) {
-      const section = document.querySelector(href);
+      const section = document.getElementById(id);
       if (section) section.scrollIntoView({ behavior: "smooth" });
     } else {
       navigate(route);
     }
   };
 
+  // Contact bouton
+  const goToContact = () => handleClick("contact", "/contact");
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md z-50">
-      <div className="max-w-6xl mx-auto flex justify-between items-center py-1 px-2">
+      <div className="max-w-6xl mx-auto flex justify-between items-center py-2 px-4">
+        <Link to="/">
+          <img src={logo} alt="Logo" className="w-20 h-20" />
+        </Link>
 
-        {/* Logo */}
-        <div className="cursor-pointer">
-          <button onClick={() => handleSmartNav("#home", "/")}>
-            <img src={logo} alt="Logo" className="w-20 h-20" />
-          </button>
-        </div>
-
-        {/* Desktop Links */}
+        {/* Desktop */}
         <ul className="hidden md:flex space-x-6 items-center">
           {links.map((link) => (
-            <li key={link.href}>
-              <Link
-                to={link.route}
-                className="text-white hover:text-purple-400 transition"
-              >
+            <li key={link.name}>
+              <Button variant="ghost" className="text-white hover:text-purple-400" onClick={() => handleClick(link.id, link.route)}>
                 {link.name}
-              </Link>
+              </Button>
             </li>
           ))}
-
-          <Separator orientation="vertical" className="bg-white/30 h-6 mx-2" />
-
-          <Link to="/contact">
-            <Button variant="secondary" size="sm" className="text-black">
-              Contact Me
-            </Button>
-          </Link>
+          <Button variant="secondary" size="sm" onClick={goToContact}>
+            Contact Me
+          </Button>
         </ul>
 
         {/* Mobile Hamburger */}
@@ -73,35 +62,31 @@ function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.ul
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="flex flex-col md:hidden bg-black/90 backdrop-blur-md text-center space-y-4 py-4 px-6 relative z-[9999]"
-          >
-            {links.map((link) => (
-              <li key={link.href}>
-                <button
-                  onClick={() => handleSmartNav(link.href, link.route)}
-                  className="text-white hover:text-purple-400 transition"
-                >
-                  {link.name}
-                </button>
-              </li>
-            ))}
-
-            <button onClick={() => handleSmartNav("#contact", "/contact")}>
-              <Button variant="secondary" size="sm" className="text-black">
-                Contact Me
+      {mobileOpen && (
+        <ul className="md:hidden bg-black/90 text-center space-y-4 py-4">
+          {links.map((link) => (
+            <li key={link.name}>
+              <Button
+                variant="ghost"
+                className="text-white hover:text-purple-400"
+                onClick={() => handleClick(link.id, link.route)}
+              >
+                {link.name}
               </Button>
-            </button>
-          </motion.ul>
-        )}
-      </AnimatePresence>
+            </li>
+          ))}
+
+          <li>
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={goToContact}
+            >
+              Contact Me
+            </Button>
+          </li>
+        </ul>
+      )}
     </nav>
   );
 }
-
-export default Navbar;

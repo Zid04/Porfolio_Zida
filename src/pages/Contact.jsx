@@ -1,7 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { Button } from "../components/ui/button";
 import { Mail, MapPin, Send } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const form = useRef();
@@ -33,22 +34,24 @@ export default function Contact() {
       )
       .then(
         () => {
-          setFeedback({
-            type: "success",
-            message: "Your message has been sent successfully!",
-          });
+          setFeedback({ type: "success", message: "Your message has been sent successfully!" });
           setFormData({ name: "", email: "", message: "" });
           setSending(false);
         },
         () => {
-          setFeedback({
-            type: "error",
-            message: "An error occurred. Please try again.",
-          });
+          setFeedback({ type: "error", message: "An error occurred. Please try again." });
           setSending(false);
         }
       );
   };
+
+  // Feedback automatique disparaissant
+  useEffect(() => {
+    if (feedback) {
+      const timer = setTimeout(() => setFeedback(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [feedback]);
 
   return (
     <section
@@ -57,7 +60,6 @@ export default function Contact() {
     >
       {/* Titre */}
       <h2 className="text-4xl font-bold mb-4 text-purple-300">Contact Me</h2>
-
       <p className="text-white/70 mb-8 max-w-2xl text-center">
         Do you have a project in mind or simply want to chat?  
         Feel free to reach out — I’m always open to new opportunities.
@@ -69,7 +71,6 @@ export default function Contact() {
           <Mail size={20} />
           <span>owonazida@gmail.com</span>
         </div>
-
         <div className="flex items-center gap-2">
           <MapPin size={20} />
           <span>Rennes, France</span>
@@ -83,9 +84,13 @@ export default function Contact() {
       </div>
 
       {/* Formulaire */}
-      <form
+      <motion.form
         ref={form}
         onSubmit={handleSubmit}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
         className="w-full max-w-xl flex flex-col gap-4 bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10"
       >
         <h3 className="text-2xl font-semibold text-purple-200 mb-2">
@@ -114,7 +119,7 @@ export default function Contact() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
           />
         </div>
 
@@ -127,7 +132,7 @@ export default function Contact() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
           />
         </div>
 
@@ -140,7 +145,7 @@ export default function Contact() {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
           ></textarea>
         </div>
 
@@ -149,11 +154,11 @@ export default function Contact() {
           type="submit"
           size="lg"
           disabled={sending}
-          className="mt-4 rounded-full px-10 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 transition flex items-center gap-2"
+          className="mt-4 rounded-full px-10 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 transition transform hover:scale-105 flex items-center gap-2"
         >
           {sending ? "Sending..." : <>Send <Send size={18} /></>}
         </Button>
-      </form>
+      </motion.form>
     </section>
   );
 }
