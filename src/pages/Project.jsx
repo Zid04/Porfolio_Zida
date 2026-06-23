@@ -9,7 +9,7 @@ const projects = [
   {
     title: "Agroking",
     description: "Application to showcase the company's services, blog, and products with ordering features.",
-    tech: ["React", "Node.js", "Tailwind", "MySQL", "Framer Motion"],
+    tech: ["React", "Node.js", "Tailwind", "JWT","MongoDB", "Framer Motion"],
     link: "https://github.com/zid04/Agroking"
   },
   {
