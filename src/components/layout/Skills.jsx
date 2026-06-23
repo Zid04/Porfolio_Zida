@@ -11,15 +11,17 @@ const skills = {
   Frontend: [
     { name: "React", icon: <FaReact /> },
     { name: "Tailwind", icon: <SiTailwindcss /> },
-    { name: "JavaScript", icon: <FaJs /> },
+   
     { name: "HTML", icon: <FaHtml5 /> },
     { name: "CSS", icon: <FaCss3Alt /> },
-    { name: "Bootstrap", icon: <FaBootstrap /> }
-  ],
+    { name: "Bootstrap", icon: <FaBootstrap /> },
+  {name: "Framer Motion", icon: <FaFigma /> }],
   Backend: [
     { name: "Node.js", icon: <FaNodeJs /> },
     { name: "Express", icon: <SiExpress /> },
     { name: "PHP", icon: <FaPhp /> },
+     { name: "JavaScript", icon: <FaJs /> },
+     {name: "flutter", icon: <FaFigma /> },
     { name: "Laravel", icon: <FaLaravel /> },
     { name: "MySQL", icon: <FaDatabase /> }
   ],
@@ -27,7 +29,9 @@ const skills = {
     { name: "Git", icon: <FaGitAlt /> },
     { name: "Docker", icon: <FaDocker /> },
     { name: "Postman", icon: <SiPostman /> },
-    { name: "Figma", icon: <FaFigma /> }
+    { name: "Figma", icon: <FaFigma /> },
+    { name: "VS Code", icon: <FaFigma /> },
+    { name: "Scramble", icon: <FaFigma /> }
   ]
 };
 

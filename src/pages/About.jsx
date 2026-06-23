@@ -18,7 +18,15 @@ const experiences = [
     title: "Stage en conception génie logiciel",
     company: "ASM Afrik",
     description: "Conception et développement d’une application de gestion hôtelière."
+  },
+  {
+    year: "2026 (Actuelle)",
+    title: "Stage en conception d'application web",
+    company: "WILTAG",
+    description: "Conception et développement d’une application de Gestion de Stage et de candidature."
   }
+
+
 ];
 
 export default function About() {
