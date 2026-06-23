@@ -21,7 +21,7 @@ const projects = [
   {
     title: "Management Hotel",
     description: "Hotel management application with reservations, rooms, and inventory tracking.",
-    tech: ["Laravel", "React", "Tailwind"],
+    tech: ["php", "html", "css", "javascript", "MySQL"],
     link: "https://github.com/zid04/Floberna-Hotel"
   },
   {
@@ -39,9 +39,21 @@ const projects = [
   {
     title: "Track Anime",
     description: "Application for tracking anime, manga, and movies.",
-    tech: ["Laravel", "React", "Tailwind"],
-    link: "https://github.com/zid04/Track-Anime"
+    tech: ["Laravel", "React", "Tailwind", "framer-motion", "MySQL", "Postman"],
+    link: "https://github.com/zid04/Z-Animex_V2"
   },
+  {
+    title: "Kidelya",
+    description: "Application for children Activities.",
+    tech: ["Laravel", "React", "Tailwind", "MySQL" ,"Docker", "Postman", "scramble", "SMTP"],
+    link: "https://github.com/zid04/Kidelya"
+  },
+  {
+    title: "Movie-Explorer",
+    description: "Application for children Activities.",
+    tech: ["flutter", "omdb api", "dart"],
+    link: "https://github.com/zid04/Movie-Explorer"
+  }
 ];
 
 function Projects() {
