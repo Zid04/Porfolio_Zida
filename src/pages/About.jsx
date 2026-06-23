@@ -20,7 +20,7 @@ const experiences = [
     description: "Conception et développement d’une application de gestion hôtelière."
   },
   {
-    year: "2026 (Actuelle)",
+    year: "2026",
     title: "Stage en conception d'application web",
     company: "WILTAG",
     description: "Conception et développement d’une application de Gestion de Stage et de candidature."
